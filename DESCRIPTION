@@ -1,0 +1,28 @@
+Package: scTELL
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("Kyeonghun", "Jeong", , "scientist0205@snu.ac.kr", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-8265-1576"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    ArchR,
+    ComplexHeatmap,
+    GenomicRanges,
+    ggplot2,
+    Seurat,
+    Signac,
+    SummarizedExperiment,
+    IRanges,
+    Matrix,
+    S4Vectors,
+    methods,
+    patchwork,
+    singleCellHaystack
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
