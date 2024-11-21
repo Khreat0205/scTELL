@@ -1,5 +1,5 @@
 Package: scTELL
-Title: What the Package Does (One Line, Title Case)
+Title: Single-cell Transposable Element Locus-Level analysis
 Version: 0.0.0.9000
 Authors@R: 
     person("Kyeonghun", "Jeong", , "scientist0205@snu.ac.kr", role = c("aut", "cre"),
