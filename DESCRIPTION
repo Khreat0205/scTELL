@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Kyeonghun", "Jeong", , "scientist0205@snu.ac.kr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8265-1576"))
-Description: What the package does (one paragraph).
+Description: scTELL (single-cell Transposable Element Locus-Level analysis) is a computational framework designed to analyze transposable element (TE) accessibility patterns at locus-level resolution in single-cell ATAC-seq data.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

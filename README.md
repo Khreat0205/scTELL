@@ -38,26 +38,50 @@ library(scTELL)
 # Load your data
 proj <- loadArchRProject("path/to/ArchR/project")
 
+rmsk <- read.table("path/to/rmsk/table")
+
 # Define target TEs
-te_regions <- defineTargetTEs(
-  genome = "hg38",
-  te_families = c("L1HS", "SVA", "HERVK"),
-  min_length = c(5000, 700, 5000)
+l1_catalog <- create_te_catalog(
+  rmsk_table = rmsk,
+  element_types = c("L1HS", "L1PA2", "L1PA3"),
+  min_length = 5000
+)
+
+filtered_catalog <- filter_te_loci(
+  te_catalog = combined_catalog,
+  peak_regions = peaks,
+  blacklist = blacklist_regions,
+  upstream_extension = 1000
 )
 
 # Calculate TE accessibility scores
-te_matrix <- calculateTEScores(
-  project = proj,
-  te_regions = te_regions,
-  extend_upstream = 1000
+scored_proj <- compute_te_scores(
+  archr_proj = proj,
+  te_loci = filtered_catalog,
+  upstream_params = list(min = 100, max = 1000),
+  downstream_params = list(min = 100, max = 1000)
+)
+
+te_mat <- extract_te_matrix(
+  archr_proj = scored_proj,
+  matrix_name = "TEMatrix"
 )
 
 # Perform cell type-specific analysis
-te_markers <- findTEMarkers(
-  te_matrix = te_matrix,
+te_markers <- find_te_markers(
+  archr_proj = proj,
   group_by = "cell_type",
   test_method = "wilcoxon"
 )
+
+# Perform cluster-free analysis
+haystack_results = analyze_te_heterogeneity(
+  archr_proj = proj,
+  reduction = "UMAP",
+  grid_points = 50
+)
+
+
 ```
 
 
