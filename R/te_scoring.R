@@ -113,7 +113,7 @@ extract_te_matrix <- function(
   # Scale if requested
   if (scale) {
     assay_data <- SummarizedExperiment::assay(te_mat)
-    lib_sizes <- colSums(assay_data)
+    lib_sizes <- Matrix::colSums(assay_data)
     assay_data <- t(t(assay_data) / lib_sizes * scale_factor)
     assay(te_mat) <- assay_data
   }
@@ -153,8 +153,8 @@ filter_te_cells <- function(
   assay_data <- SummarizedExperiment::assay(te_mat)
 
   # Calculate metrics
-  total_counts <- colSums(assay_data)
-  detected_tes <- colSums(assay_data > 0)
+  total_counts <- Matrix::colSums(assay_data)
+  detected_tes <- Matrix::colSums(assay_data > 0)
 
   # Apply filters
   keep_cells <- rep(TRUE, ncol(assay_data))

@@ -49,13 +49,13 @@ l1_catalog <- create_te_catalog(
 
 filtered_catalog <- filter_te_loci(
   te_catalog = combined_catalog,
-  peak_regions = peaks,
-  blacklist = blacklist_regions,
+  peak_regions = getPeakSet(proj),
+  blacklist = getBlacklist(proj),
   upstream_extension = 1000
 )
 
 # Calculate TE accessibility scores
-scored_proj <- compute_te_scores(
+proj <- compute_te_scores(
   archr_proj = proj,
   te_loci = filtered_catalog,
   upstream_params = list(min = 100, max = 1000),
@@ -63,7 +63,7 @@ scored_proj <- compute_te_scores(
 )
 
 te_mat <- extract_te_matrix(
-  archr_proj = scored_proj,
+  archr_proj = proj,
   matrix_name = "TEMatrix"
 )
 
